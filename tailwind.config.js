@@ -10,7 +10,7 @@ module.exports = {
         body: ['var(--font-body)'],
       },
     },
-  },,
+  },
   plugins: [],
 }
 
