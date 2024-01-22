@@ -4,8 +4,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      fontFamily: {
+        header: ['var(--font-header)'],
+        body: ['var(--font-body)'],
+      },
+    },
+  },,
   plugins: [],
 }
 
