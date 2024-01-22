@@ -1,0 +1,22 @@
+{
+  "name": "@bitfootco/skogen",
+  "version": "0.1.0",
+  "description": "A Tailwind and React design library built to be simple, effective & maintainable",
+  "main": "dist/main.js",
+  "source": "src/index.ts",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bitfootco/skogen.git"
+  },
+  "author": "The Bitfoot Company",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitfootco/skogen/issues"
+  },
+  "homepage": "https://github.com/bitfootco/skogen#readme"
+}
