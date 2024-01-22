@@ -7,7 +7,9 @@
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parcel watch",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/bitfootco/skogen/issues"
   },
-  "homepage": "https://github.com/bitfootco/skogen#readme"
+  "homepage": "https://github.com/bitfootco/skogen#readme",
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.11.0",
+    "@parcel/transformer-typescript-types": "^2.11.0",
+    "parcel": "^2.11.0",
+    "typescript": "^5.3.3"
+  }
 }
