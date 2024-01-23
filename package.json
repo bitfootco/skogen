@@ -3,9 +3,27 @@
   "version": "0.1.0",
   "description": "A Tailwind and React design library built to be simple, effective & maintainable",
   "main": "dist/main.js",
-  "source": "src/index.ts",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
+  "targets": {
+    "main": {
+      "source": "src/index.ts",
+      "distDir": "dist"
+    },
+    "module": {
+      "source": "src/index.ts",
+      "distDir": "dist",
+      "outputFormat": "esmodule"
+    },
+    "types": {
+      "source": "src/index.ts",
+      "distDir": "dist"
+    },
+    "fonts": {
+      "source": "src/styles/fonts.css",
+      "distDir": "dist"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel watch",

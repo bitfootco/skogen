@@ -15,7 +15,7 @@ const Typography = ({
   variant = 'p',
   component = variant || 'p',
   color = 'primary',
-  className,
+  className = '',
   children,
 }: TypographyProps) => {
   // 1. Adjust variant based on passed props, eg. h1, h2, h3, etc.
