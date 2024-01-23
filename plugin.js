@@ -1,12 +1,16 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = plugin(
-  function ({ addBase }) {
+  function ({ addBase, theme }) {
     // Add base styles
     addBase({
       ':root': {
+        // font family variables
         '--font-header': 'Montserrat',
         '--font-body': 'Noto Sans',
+        // color variables
+        '--color-primary': theme("colors.blue.500"), 
+        '--color-secondary': theme("colors.violet.500"),
       },
     });
   },
@@ -14,8 +18,13 @@ module.exports = plugin(
     // extend the base theme
     theme: {
       extend: {
+        // add custom colors
+        colors: {
+          primary: 'var(--color-primary)',
+          secondary: 'var(--color-secondary)',
+        },
+        // add custom font selectors
         fontFamily: {
-          // add custom font selectors
           header: ['var(--font-header)'],
           body: ['var(--font-body)'],
         },
