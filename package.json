@@ -5,25 +5,7 @@
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
-  "targets": {
-    "main": {
-      "source": "src/index.ts",
-      "distDir": "dist"
-    },
-    "module": {
-      "source": "src/index.ts",
-      "distDir": "dist",
-      "outputFormat": "esmodule"
-    },
-    "types": {
-      "source": "src/index.ts",
-      "distDir": "dist"
-    },
-    "fonts": {
-      "source": "src/styles/fonts.css",
-      "distDir": "dist"
-    }
-  },
+  "source": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel watch",
