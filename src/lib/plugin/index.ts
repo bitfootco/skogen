@@ -1,35 +1,48 @@
+import colors from 'tailwindcss/colors';
 import plugin from 'tailwindcss/plugin';
+import paletteGenerator from '../../utils/paletteGenerator';
 
-const skogen = plugin(
-  function ({ addBase, theme }) {
-    // Add base styles
-    addBase({
-      ':root': {
-        // font family variables
-        '--font-header': 'Montserrat',
-        '--font-body': 'Noto Sans',
-        // color variables
-        '--color-primary': theme('colors.blue.400'),
-        '--color-secondary': theme('colors.violet.500'),
-      },
-    });
+interface SkogenOptions {
+  colors: {
+    primary?: string;
+    secondary?: string;
+  };
+}
+
+const skogen = plugin.withOptions(
+  function (_) {
+    return function ({ addBase }) {
+      // Add base styles
+      addBase({
+        ':root': {
+          // font family variables
+          '--font-header': 'Montserrat',
+          '--font-body': 'Noto Sans',
+        },
+      });
+    };
   },
-  {
-    // extend the base theme
-    theme: {
-      extend: {
-        // add custom colors
-        colors: {
-          primary: 'var(--color-primary)',
-          secondary: 'var(--color-secondary)',
-        },
-        // add custom font selectors
-        fontFamily: {
-          header: ['var(--font-header)'],
-          body: ['var(--font-body)'],
+  function (options: SkogenOptions) {
+    return {
+      theme: {
+        extend: {
+          // add custom colors
+          colors: {
+            primary: paletteGenerator(
+              options?.colors?.primary || colors.blue[400],
+            ),
+            secondary: paletteGenerator(
+              options?.colors?.secondary || colors.violet[500],
+            ),
+          },
+          // add custom font selectors
+          fontFamily: {
+            header: ['var(--font-header)'],
+            body: ['var(--font-body)'],
+          },
         },
       },
-    },
+    };
   },
 );
 
