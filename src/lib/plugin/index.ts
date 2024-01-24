@@ -1,6 +1,6 @@
-const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin';
 
-module.exports = plugin(
+const skogen = plugin(
   function ({ addBase, theme }) {
     // Add base styles
     addBase({
@@ -9,8 +9,8 @@ module.exports = plugin(
         '--font-header': 'Montserrat',
         '--font-body': 'Noto Sans',
         // color variables
-        '--color-primary': theme("colors.blue.500"), 
-        '--color-secondary': theme("colors.violet.500"),
+        '--color-primary': theme('colors.blue.400'),
+        '--color-secondary': theme('colors.violet.500'),
       },
     });
   },
@@ -32,3 +32,5 @@ module.exports = plugin(
     },
   },
 );
+
+export default skogen;
