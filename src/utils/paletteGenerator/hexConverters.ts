@@ -1,42 +1,59 @@
 import type { HSL } from './interfaces';
 
-export const hexToHSL = (hex: string): HSL => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
-  try {
-    let r = parseInt(result[1], 16);
-    let g = parseInt(result[2], 16);
-    let b = parseInt(result[3], 16);
-    (r /= 255), (g /= 255), (b /= 255);
-    const max = Math.max(r, g, b),
-      min = Math.min(r, g, b);
-    let h = 0,
-      s,
-      l = (max + min) / 2;
-    if (max == min) {
-      h = s = 0; // achromatic
-    } else {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch (max) {
-        case r:
-          h = (g - b) / d + (g < b ? 6 : 0);
-          break;
-        case g:
-          h = (b - r) / d + 2;
-          break;
-        case b:
-          h = (r - g) / d + 4;
-          break;
+export const hexToRGB = (
+  hex: string,
+): {
+  r: number;
+  g: number;
+  b: number;
+} => {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+    return r + r + g + g + b + b;
+  });
+
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
       }
-      h /= 6;
-    }
-    const HSL: HSL = { h: 0, s: 0, l: 0 };
-    HSL.h = Math.round(h * 360);
-    HSL.s = Math.round(s * 100);
-    HSL.l = Math.round(l * 100);
+    : {
+        r: 0,
+        g: 0,
+        b: 0,
+      };
+};
+
+export const rgbToHSL = (r: number, g: number, b: number) => {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const l = Math.max(r, g, b);
+  const s = l - Math.min(r, g, b);
+  const h = s
+    ? l === r
+      ? (g - b) / s
+      : l === g
+        ? 2 + (b - r) / s
+        : 4 + (r - g) / s
+    : 0;
+  return [
+    60 * h < 0 ? 60 * h + 360 : 60 * h,
+    100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+    (100 * (2 * l - s)) / 2,
+  ];
+};
+
+export const hexToHSL = (hex: string): HSL => {
+  try {
+    const { r, g, b } = hexToRGB(hex);
+    const [h, s, l] = rgbToHSL(r, g, b);
+    const HSL = { h, s, l };
     return HSL;
   } catch (error) {
-    console.log(hex);
     return { h: 0, s: 0, l: 0 };
   }
 };
