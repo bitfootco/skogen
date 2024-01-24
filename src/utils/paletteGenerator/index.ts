@@ -2,31 +2,10 @@
 // from a single hex color. Heavily inspired by and using pieces of:
 // https://github.com/bobthered/tailwindcss-palette-generator
 import { generateColor } from './generateColor';
-import type { Color, Palette, Shade } from './interfaces';
+import type { Color, Shade } from './interfaces';
 
-interface OptionsObject {
-  colors?: string[];
-  names?: string[];
-  preserve?: boolean;
-  shades?: Shade[];
-}
-
-const paletteGenerator = (options: string | string[] | OptionsObject) => {
-  // defaults
-  let colors: string[] = [];
-  let names: string[] = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'quaternary',
-    'quinary',
-    'senary',
-    'septenary',
-    'octonary',
-    'nonary',
-    'denary',
-  ];
-  let preserve: boolean = true;
+const paletteGenerator = (hex: string) => {
+  // shade calculation defaults
   let shades: Shade[] = [
     { name: '50', lightness: 98 },
     { name: '100', lightness: 95 },
@@ -40,34 +19,10 @@ const paletteGenerator = (options: string | string[] | OptionsObject) => {
     { name: '900', lightness: 7 },
     { name: '950', lightness: 4 },
   ];
-
-  // check options type
-  if (typeof options === 'string')
-    options = { colors: [options], names, preserve, shades };
-  if (typeof options === 'object' && Array.isArray(options))
-    options = { colors: options, names, preserve, shades };
-  if (typeof options === 'object' && !Array.isArray(options))
-    options = Object.assign({ colors, names, preserve, shades }, options);
-
-  // initiate palette
-  const palette: Palette = {};
-
-  // destructure options
-  ({
-    colors = colors,
-    names = names,
-    preserve = preserve,
-    shades = shades,
-  } = options);
-
   // loop through palette
-  colors.forEach((hex: string, i: number) => {
-    const name: string = names[i];
-    const color: Color = generateColor({ hex, preserve, shades });
-    palette[name] = color;
-  });
+  const colors: Color = generateColor({ hex, shades });
 
-  return palette;
+  return colors;
 };
 
 export default paletteGenerator;

@@ -1,28 +1,22 @@
 import { hexToHSL, hslToHEX } from './hexConverters';
 import type { Color, HSL, Shade } from './interfaces';
 
-const generateColor = ({
-  hex,
-  preserve,
-  shades,
-}: {
+interface GenerateColorConfig {
   hex: string;
-  preserve: boolean;
   shades: Shade[];
-}): Color => {
+}
+
+const generateColor = ({ hex, shades }: GenerateColorConfig): Color => {
   // convert hex to hsl
   const colorHSL = hexToHSL(hex);
 
   // initiate shade object
   const obj: Color = {};
 
-  // initiate lightnessDelta object
-  const lightnessDelta: { [key: string]: number } = {};
-
   // generate shades
   shades.forEach(({ name, lightness }: Shade) => {
     // deconstruct h & s
-    const { h, s, l } = colorHSL;
+    const { h, s } = colorHSL;
 
     // generate shade hsl
     const hsl: HSL = { h, s, l: lightness };
@@ -32,18 +26,7 @@ const generateColor = ({
 
     // update shade object
     obj[name] = hex;
-
-    // update lightnessDelta if preserving color
-    if (preserve) lightnessDelta[name] = Math.abs(l - lightness);
   });
-
-  // if preserving color, inject original color
-  if (preserve) {
-    const [closestShade] = Object.keys(lightnessDelta).sort(
-      (a, b) => lightnessDelta[a] - lightnessDelta[b],
-    );
-    obj[closestShade] = hex;
-  }
 
   return obj;
 };
