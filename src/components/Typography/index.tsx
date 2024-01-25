@@ -14,7 +14,7 @@ export interface TypographyProps {
 const Typography = ({
   variant = 'p',
   component = variant || 'p',
-  color = 'primary',
+  color = 'black',
   className = '',
   children,
 }: TypographyProps) => {
@@ -30,11 +30,11 @@ const Typography = ({
   };
   // 2. Adjust text-color based on passed props, eg. primary, secondary, etc.
   const colorsDictionary = {
-    primary: 'text-slate-100',
-    secondary: 'text-lime-500',
+    primary: 'text-primary-500',
+    secondary: 'text-secondary-500',
     white: 'text-white',
     black: 'text-slate-800',
-    gray: 'text-gray-300',
+    gray: 'text-gray-200',
   };
   // 3. Return the component with pre-configured styles, dynamic styles and passed styles props
   const Component = () => {

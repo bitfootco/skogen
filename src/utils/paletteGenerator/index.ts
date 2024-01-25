@@ -1,12 +1,12 @@
 // Useful tool to generate a palette of Tailwind compatible colors
-// from a single hex color. Heavily inspired by and using pieces of:
+// from a single hex color. Heavily inspired by:
 // https://github.com/bobthered/tailwindcss-palette-generator
 import { generateColor } from './generateColor';
 import type { Color, Shade } from './interfaces';
 
 const paletteGenerator = (hex: string) => {
   // shade calculation defaults
-  let shades: Shade[] = [
+  const shades: Shade[] = [
     { name: '50', lightness: 98 },
     { name: '100', lightness: 95 },
     { name: '200', lightness: 90 },
