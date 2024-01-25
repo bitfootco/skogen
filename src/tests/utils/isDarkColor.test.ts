@@ -33,4 +33,7 @@ describe('isDarkColor', () => {
     expect(isDarkColor(colors.lime[200])).toBe(false);
     expect(isDarkColor(colors.lime[100])).toBe(false);
   });
+  test('should return true for a color right on the edge', () => {
+    expect(isDarkColor('#4b0cdf')).toBe(true);
+  });
 });
