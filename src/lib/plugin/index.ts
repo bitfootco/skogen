@@ -10,7 +10,7 @@ interface SkogenOptions {
   };
 }
 
-const skogen = plugin.withOptions(
+const skogen = plugin.withOptions<SkogenOptions>(
   function (_) {
     return function ({ addBase }) {
       // Add base styles
@@ -33,10 +33,16 @@ const skogen = plugin.withOptions(
         extend: {
           // add custom colors
           colors: {
-            primary: paletteGenerator(primary),
-            secondary: paletteGenerator(secondary),
-            default: isDarkColor(primary) ? colors.white : colors.gray[900],
-            overlay: isDarkColor(primary) ? colors.white : colors.gray[900],
+            primary,
+            secondary,
+            'palette-primary': paletteGenerator(primary),
+            'palette-secondary': paletteGenerator(secondary),
+            'button-primary': isDarkColor(primary)
+              ? colors.white
+              : colors.gray[900],
+            'button-secondary': isDarkColor(primary)
+              ? colors.white
+              : colors.gray[900],
           },
           // add custom font selectors
           fontFamily: {
