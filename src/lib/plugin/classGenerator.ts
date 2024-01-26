@@ -70,7 +70,7 @@ export const classGenerator = function (
     new_utilities,
     classUtility.general({
       type: 'bg',
-      attribute: 'background-color',
+      attribute: 'backgroundColor',
       color,
       name,
     }),

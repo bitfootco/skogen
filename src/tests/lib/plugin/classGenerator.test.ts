@@ -10,10 +10,10 @@ describe('classGenerator()', () => {
         type: 'text',
         attribute: 'color',
         color: '#fa3f3f',
-        name: 'test',
+        name: 'primary',
       });
       const [first] = Object.keys(results);
-      const expected = '.text-test-50';
+      const expected = '.text-primary-50';
       expect(Object.keys(results).length).toEqual(11);
       expect(first).toEqual(expected);
       expect(results[expected]).toEqual({
@@ -23,24 +23,24 @@ describe('classGenerator()', () => {
     it('should return all expected bg-{color}-{shade} utils', () => {
       const results = classUtility.general({
         type: 'bg',
-        attribute: 'background-color',
+        attribute: 'backgroundColor',
         color: '#fa3f3f',
-        name: 'test',
+        name: 'primary',
       });
       const [first] = Object.keys(results);
-      const expected = '.bg-test-50';
+      const expected = '.bg-primary-50';
       expect(Object.keys(results).length).toEqual(11);
       expect(first).toEqual(expected);
       expect(results[expected]).toEqual({
-        'background-color': 'rgba(255, 245, 245, var(--tw-bg-opacity, 1))',
+        backgroundColor: 'rgba(255, 245, 245, var(--tw-bg-opacity, 1))',
       });
     });
   });
   describe('classGenerator()', () => {
     it('should return all expect class utilities', () => {
-      const results = classGenerator('test', '#fa3f3f');
+      const results = classGenerator('primary', '#fa3f3f');
       expect(Object.keys(results).length).toEqual(22);
-      expect(results['.text-test-500']).toEqual({
+      expect(results['.text-primary-500']).toEqual({
         color: 'rgba(229, 6, 6, var(--tw-text-opacity, 1))',
       });
     });
