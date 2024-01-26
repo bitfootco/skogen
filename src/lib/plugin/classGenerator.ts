@@ -17,7 +17,11 @@ export const classUtility = {
       [key: string]: string;
     };
   } => {
-    let new_utilities = {};
+    let new_utilities: {
+      [key: string]: {
+        [key: string]: string;
+      };
+    } = {};
     // generate the full palette
     const palette = paletteGenerator(color);
     Object.keys(palette).forEach((shade) => {
@@ -35,7 +39,6 @@ export const classUtility = {
         ', var(--tw-' +
         type +
         '-opacity, 1))';
-      // @ts-ignore
       new_utilities['.' + type + '-' + name + '-' + shade] = buffer;
     });
     return new_utilities;
