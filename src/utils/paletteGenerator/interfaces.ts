@@ -1,5 +1,5 @@
 interface Color {
-  [key: string]: string;
+  [shade: string]: string;
 }
 interface HSL {
   h: number;
