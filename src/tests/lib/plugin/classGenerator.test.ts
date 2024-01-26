@@ -20,11 +20,26 @@ describe('classGenerator()', () => {
         color: 'rgba(255, 245, 245, var(--tw-text-opacity, 1))',
       });
     });
+    it('should return all expected bg-{color}-{shade} utils', () => {
+      const results = classUtility.general({
+        type: 'bg',
+        attribute: 'background-color',
+        color: '#fa3f3f',
+        name: 'test',
+      });
+      const [first] = Object.keys(results);
+      const expected = '.bg-test-50';
+      expect(Object.keys(results).length).toEqual(11);
+      expect(first).toEqual(expected);
+      expect(results[expected]).toEqual({
+        'background-color': 'rgba(255, 245, 245, var(--tw-bg-opacity, 1))',
+      });
+    });
   });
   describe('classGenerator()', () => {
     it('should return all expect class utilities', () => {
       const results = classGenerator('test', '#fa3f3f');
-      expect(Object.keys(results).length).toEqual(11);
+      expect(Object.keys(results).length).toEqual(22);
       expect(results['.text-test-500']).toEqual({
         color: 'rgba(229, 6, 6, var(--tw-text-opacity, 1))',
       });

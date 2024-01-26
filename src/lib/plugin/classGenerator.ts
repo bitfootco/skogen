@@ -65,6 +65,16 @@ export const classGenerator = function (
       name,
     }),
   );
+  // create background utilities
+  new_utilities = Object.assign(
+    new_utilities,
+    classUtility.general({
+      type: 'bg',
+      attribute: 'background-color',
+      color,
+      name,
+    }),
+  );
 
   return new_utilities;
 };
