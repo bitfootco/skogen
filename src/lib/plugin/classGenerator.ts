@@ -1,6 +1,18 @@
 import paletteGenerator from '../../utils/paletteGenerator';
 import { hexToRGB } from '../../utils/paletteGenerator/hexConverters';
 
+interface NewUtilities {
+  [cssSelector: string]: {
+    [cssRule: string]: string;
+  };
+}
+
+const generateCSS = (color: string, type: string) => {
+  // generate raw CSS string to use with selector
+  const { r, g, b } = hexToRGB(color);
+  return `rgba(${r}, ${g}, ${b}, var(--tw-${type}-opacity, 1))`;
+};
+
 export const classUtility = {
   general: ({
     type,
@@ -12,33 +24,19 @@ export const classUtility = {
     attribute: string;
     color: string;
     name: string;
-  }): {
-    [key: string]: {
-      [key: string]: string;
+  }): NewUtilities => {
+    let new_utilities: NewUtilities = {};
+    // generate singleton CSS color utility
+    new_utilities['.' + type + '-' + name] = {
+      [attribute]: generateCSS(color, type),
     };
-  } => {
-    let new_utilities: {
-      [key: string]: {
-        [key: string]: string;
-      };
-    } = {};
     // generate the full palette
     const palette = paletteGenerator(color);
     Object.keys(palette).forEach((shade) => {
       const buffer: {
         [key: string]: string;
       } = {};
-      const { r, g, b } = hexToRGB(palette[shade]);
-      buffer[attribute] =
-        'rgba(' +
-        r +
-        ', ' +
-        g +
-        ', ' +
-        b +
-        ', var(--tw-' +
-        type +
-        '-opacity, 1))';
+      buffer[attribute] = generateCSS(palette[shade], type);
       new_utilities['.' + type + '-' + name + '-' + shade] = buffer;
     });
     return new_utilities;
