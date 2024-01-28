@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 export interface TypographyProps {
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-  color?: 'primary' | 'secondary' | 'white' | 'black' | 'gray';
+  color?: 'default' | 'primary' | 'secondary' | 'white' | 'black' | 'gray';
   className?: string;
   children: React.ReactNode;
 }
@@ -14,7 +14,7 @@ export interface TypographyProps {
 const Typography = ({
   variant = 'p',
   component = variant || 'p',
-  color = 'black',
+  color = 'default',
   className = '',
   children,
 }: TypographyProps) => {
@@ -30,6 +30,7 @@ const Typography = ({
   };
   // 2. Adjust text-color based on passed props, eg. primary, secondary, etc.
   const colorsDictionary = {
+    default: 'text-default',
     primary: 'text-primary-500',
     secondary: 'text-secondary-500',
     white: 'text-white',

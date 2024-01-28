@@ -18,12 +18,12 @@ const skogen = plugin(function ({ addBase, addUtilities, theme }) {
     },
   });
   // generate theme classes based on defaults or user defined colors
-  const primary: string = theme('colors.primary') || colors.blue[500];
-  const secondary: string = theme('colors.secondary') || colors.violet[500];
+  const primary: string = theme('colors.primary') || colors.blue[800];
+  const secondary: string = theme('colors.secondary') || colors.violet[800];
   // generate singleton CSS utilities
   const baseUtilities = {
     '.text-default': {
-      color: isDarkColor(theme('colors.text.default') || colors.gray[900])
+      color: isDarkColor(theme('colors.text.default') || colors.gray[100])
         ? 'var(--color-white)'
         : 'var(--color-black)',
     },
