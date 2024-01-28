@@ -73,6 +73,16 @@ export const classGenerator = function (
       name,
     }),
   );
+  // crate border utilities
+  new_utilities = Object.assign(
+    new_utilities,
+    classUtility.general({
+      type: 'border',
+      attribute: 'borderColor',
+      color,
+      name,
+    }),
+  );
 
   return new_utilities;
 };

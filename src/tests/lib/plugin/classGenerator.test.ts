@@ -63,11 +63,40 @@ describe('classGenerator()', () => {
         backgroundColor: 'rgba(255, 245, 245, var(--tw-bg-opacity, 1))',
       });
     });
+    it('should return all expected border-{color} utils', () => {
+      const results = classUtility.general({
+        type: 'border',
+        attribute: 'borderColor',
+        color: '#fa3f3f',
+        name: 'primary',
+      });
+      const [first] = Object.keys(results);
+      const expected = '.border-primary';
+      expect(first).toEqual(expected);
+      expect(results[expected]).toEqual({
+        borderColor: 'rgba(250, 63, 63, var(--tw-border-opacity, 1))',
+      });
+    });
+    it('should return all expected border-{color}-{shade} utils', () => {
+      const results = classUtility.general({
+        type: 'border',
+        attribute: 'borderColor',
+        color: '#fa3f3f',
+        name: 'primary',
+      });
+      const [_, second] = Object.keys(results);
+      const expected = '.border-primary-50';
+      expect(Object.keys(results).length).toEqual(12);
+      expect(second).toEqual(expected);
+      expect(results[expected]).toEqual({
+        borderColor: 'rgba(255, 245, 245, var(--tw-border-opacity, 1))',
+      });
+    });
   });
   describe('classGenerator()', () => {
     it('should return all expect class utilities', () => {
       const results = classGenerator('primary', '#fa3f3f');
-      expect(Object.keys(results).length).toEqual(24);
+      expect(Object.keys(results).length).toEqual(36);
       expect(results['.text-primary-500']).toEqual({
         color: 'rgba(229, 6, 6, var(--tw-text-opacity, 1))',
       });
