@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SelectProps {
-  label: string;
+  label?: string;
   id: string;
   options: {
     value: string;
@@ -22,12 +22,14 @@ const Select = ({
 }: SelectProps) => {
   return (
     <form>
-      <label
-        htmlFor={id}
-        className="mb-2 block text-sm font-medium text-gray-900"
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={id}
+          className="mb-2 block text-sm font-medium text-gray-900"
+        >
+          {label}
+        </label>
+      )}
       <select
         id={id}
         value={value}
