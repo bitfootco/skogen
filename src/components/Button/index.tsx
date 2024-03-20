@@ -14,6 +14,7 @@ interface ButtonProps {
   href?: string;
   className?: string;
   text: string;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
@@ -26,6 +27,7 @@ const Button = ({
   href = '',
   className = '',
   text,
+  disabled = false,
   onClick,
 }: ButtonProps) => {
   // 1. adjust color / variant based on passed props, eg. primary, outlined, etc.
@@ -49,7 +51,9 @@ const Button = ({
     lg: 'px-6 py-3 text-lg',
     xl: 'px-8 py-4 text-xl',
   };
-  // 3. Return the button with pre-configured styles, dynamic styles and passed styles props
+  // 3. If the button is disabled, we should add the disabled styles
+  const disabledStyles = disabled ? 'cursor-not-allowed opacity-50' : '';
+  // 4. Return the button with pre-configured styles, dynamic styles and passed styles props
   return (
     <button
       onClick={onClick}
@@ -58,7 +62,7 @@ const Button = ({
           sizesDictionary[size]
         } font-body font-bold ${
           variantsDictionary[`${color}-${variant}`]
-        } ${className}`,
+        } ${disabledStyles} ${className}`,
       )}
     >
       <ConditionalWrapper
