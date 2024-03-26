@@ -1,5 +1,6 @@
 // component exports
 export { default as Button } from './components/Button';
+export { default as Checkbox } from './components/Checkbox';
 export { default as Divider } from './components/Divider';
 export { default as InputField } from './components/InputField';
 export { default as Select } from './components/Select';
