@@ -7,7 +7,7 @@ interface SelectProps {
     value: string;
     label: string;
   }[];
-  value: string;
+  value: string | string[];
   multiple?: boolean;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
