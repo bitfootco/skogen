@@ -1,6 +1,6 @@
 {
   "name": "@bitfootco/skogen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Tailwind and React design library built to be simple, effective & maintainable",
   "main": "dist/main.js",
   "module": "dist/module.js",
