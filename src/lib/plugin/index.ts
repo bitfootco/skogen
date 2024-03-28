@@ -3,8 +3,6 @@ import plugin from 'tailwindcss/plugin';
 import isDarkColor from '../../utils/isDarkColor';
 import { classGenerator } from './classGenerator';
 
-// import paletteGenerator from '../../utils/paletteGenerator';
-
 const skogen = plugin(function ({ addBase, addUtilities, theme }) {
   // Add base styles
   addBase({
