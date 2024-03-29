@@ -7,7 +7,7 @@ interface SelectProps {
     value: string;
     label: string;
   }[];
-  value: string | string[];
+  selected: string | string[];
   multiple?: boolean;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -17,7 +17,7 @@ const Select = ({
   id,
   options,
   multiple = false,
-  value,
+  selected = '',
   onChange,
 }: SelectProps) => {
   return (
@@ -32,13 +32,23 @@ const Select = ({
       )}
       <select
         id={id}
-        value={value}
+        value={selected}
         className="block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
         multiple={multiple}
         onChange={onChange}
       >
+        {!selected && (
+          <option value="" disabled selected>
+            Select an option
+          </option>
+        )}
         {options.map(({ value, label }) => (
-          <option value={value}>{label}</option>
+          <option
+            value={value}
+            selected={selected === value || selected.includes(value)}
+          >
+            {label}
+          </option>
         ))}
       </select>
     </form>
