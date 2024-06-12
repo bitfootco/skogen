@@ -48,10 +48,7 @@ const Select = ({
           </option>
         )}
         {options.map(({ value, label }) => (
-          <option
-            value={value}
-            selected={selected === value || selected.includes(value)}
-          >
+          <option key={value} value={value}>
             {label}
           </option>
         ))}
