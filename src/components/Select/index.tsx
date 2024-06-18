@@ -43,7 +43,7 @@ const Select = ({
         onChange={onChange}
       >
         {!selected && (
-          <option value="" disabled selected>
+          <option value="" disabled>
             Select an option
           </option>
         )}
