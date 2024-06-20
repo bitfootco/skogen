@@ -34,6 +34,7 @@ const InputField = ({
     lg: 'p-4 text-base',
   };
 
+  // 2. Create a border styling based on the error prop
   const borderStyling = error
     ? 'border-red-500 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:focus:border-red-500 dark:focus:ring-red-500'
     : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500';
