@@ -6,6 +6,6 @@ src/
 .nvmrc
 .postcssrc
 jest.config.js
+babel.config.json
 tailwind.config.js
 tsconfig.json
-.parcel-cache
