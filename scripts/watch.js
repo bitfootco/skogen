@@ -6,6 +6,12 @@ const path = require('path');
 const srcDir = path.join(__dirname, '../src');
 const ignoreDir = path.join(srcDir, 'test');
 
+// Debounce delay in milliseconds
+const debounceDelay = 300;
+
+// Debounce timer
+let debounceTimer;
+
 // Watch options
 const watcher = chokidar.watch(srcDir, {
   ignored: ignoreDir,
@@ -25,10 +31,17 @@ const runBuild = () => {
 // Run the initial build
 runBuild();
 
-// Watch for changes
+// Watch for changes with debouncing
 watcher.on('change', (filePath) => {
   console.log(`${filePath} has changed. Rebuilding...`);
-  runBuild();
+
+  if (debounceTimer) {
+    clearTimeout(debounceTimer);
+  }
+
+  debounceTimer = setTimeout(() => {
+    runBuild();
+  }, debounceDelay);
 });
 
 watcher.on('ready', () => {
