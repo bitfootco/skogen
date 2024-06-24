@@ -4,7 +4,14 @@ import { twMerge } from 'tailwind-merge';
 export interface TypographyProps {
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-  color?: 'default' | 'primary' | 'secondary' | 'white' | 'black' | 'gray';
+  color?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'white'
+    | 'black'
+    | 'gray'
+    | 'error';
   className?: string;
   children: React.ReactNode;
 }
@@ -36,6 +43,7 @@ const Typography = ({
     white: 'text-white',
     black: 'text-slate-800',
     gray: 'text-gray-200',
+    error: 'text-red-500',
   };
   // 3. Return the component with pre-configured styles, dynamic styles and passed styles props
   const Component = () => {

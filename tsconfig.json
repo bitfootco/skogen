@@ -2,7 +2,10 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "outDir": "build/dist",
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
     "module": "esnext",
     "target": "es2017",
     "lib": ["es6", "dom", "esnext.asynciterable", "es2017"],
@@ -21,9 +24,10 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true
   },
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
-    "build",
+    "dist",
     "scripts",
     "acceptance-tests",
     "webpack",
