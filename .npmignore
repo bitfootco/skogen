@@ -1,4 +1,5 @@
 src/
+scripts/
 .git
 .github
 .eslintrc.json
