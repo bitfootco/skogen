@@ -1,6 +1,6 @@
 {
   "name": "@bitfootco/skogen",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Tailwind and React design library built to be simple, effective & maintainable",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
