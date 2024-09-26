@@ -9,6 +9,7 @@ interface InputFieldProps {
   placeholder: string;
   id: string;
   value: string;
+  type?: 'text' | 'password' | 'email' | 'number';
   size?: 'sm' | 'md' | 'lg';
   required?: boolean;
   disabled?: boolean;
@@ -24,6 +25,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
       placeholder,
       id,
       value,
+      type = 'text',
       size = 'md',
       required = false,
       disabled = false,
@@ -52,9 +54,9 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           {label}
         </label>
         <input
-          type="text"
           id={id}
           value={value}
+          type={type}
           className={twMerge(
             `block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 ${sizeDictionary[size]} ${borderStyling} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${className}`,
           )}
