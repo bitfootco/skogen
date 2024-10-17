@@ -1,4 +1,5 @@
 // component exports
+export { default as Badge } from './components/Badge';
 export { default as Button } from './components/Button';
 export { default as Checkbox } from './components/Checkbox';
 export { default as Divider } from './components/Divider';
