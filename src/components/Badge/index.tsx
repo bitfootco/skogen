@@ -7,6 +7,7 @@ interface BadgeProps {
   size?: 'sm' | 'md' | 'lg';
   text: string;
   className?: string;
+  Icon?: React.ReactNode;
 }
 
 const Badge = ({
@@ -15,14 +16,15 @@ const Badge = ({
   size = 'md',
   text,
   className = '',
+  Icon,
 }: BadgeProps) => {
   // 1. adjust color / variant based on passed props, eg. primary, outlined, etc.
   const variantsDictionary = {
     'primary-solid': `bg-primary-500 text-white`,
-    'primary-outlined': `border-2 border-primary-500 text-primary-500`,
+    'primary-outlined': `border-2 bg-white border-primary-500 text-primary-500 dark:bg-primary-900`,
     'primary-pill': `bg-primary-500 text-white rounded-full px-2`,
     'secondary-solid': `bg-secondary-500 text-white`,
-    'secondary-outlined': `border-2 border-secondary-500 text-secondary-500`,
+    'secondary-outlined': `border-2 border-secondary-500 text-secondary-500 dark:bg-secondary-900`,
     'secondary-pill': `bg-secondary-500 text-white rounded-full px-2`,
   };
   // 2. adjust size based on passed props, eg. sm, md, lg, etc.
@@ -35,7 +37,8 @@ const Badge = ({
   return (
     <div
       className={twMerge(
-        'inline-block',
+        'inline-flex',
+        'items-center',
         'px-2',
         'py-1',
         'rounded-md',
@@ -44,7 +47,10 @@ const Badge = ({
         className,
       )}
     >
-      {text}
+      <>
+        {Icon && <span className="mr-2">{Icon}</span>}
+        {text}
+      </>
     </div>
   );
 };
