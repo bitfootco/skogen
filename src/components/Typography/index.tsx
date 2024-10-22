@@ -37,7 +37,7 @@ const Typography = ({
   };
   // 2. Adjust text-color based on passed props, eg. primary, secondary, etc.
   const colorsDictionary = {
-    default: 'text-default',
+    default: 'text-slate-800 dark:text-white',
     primary: 'text-primary-500',
     secondary: 'text-secondary-500',
     white: 'text-white',
