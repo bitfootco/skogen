@@ -58,7 +58,7 @@ const Button = ({
     <button
       onClick={onClick}
       className={twMerge(
-        `rounded-full ${sizesDictionary[size]} font-body font-bold ${
+        `flex flex-row rounded-full ${sizesDictionary[size]} font-body font-bold ${
           variantsDictionary[`${color}-${variant}`]
         } ${disabledStyles} ${className}`,
       )}

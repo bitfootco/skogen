@@ -1,14 +1,23 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface CheckboxProps {
   checked: boolean;
   label: string;
   onChange: () => void;
+  className?: string;
+  labelClassName?: string;
 }
 
-const Checkbox = ({ checked, label, onChange }: CheckboxProps) => {
+const Checkbox = ({
+  checked,
+  label,
+  onChange,
+  className = '',
+  labelClassName = '',
+}: CheckboxProps) => {
   return (
-    <div className="mb-4 flex items-center">
+    <div className={twMerge('mb-4 inline-flex items-center', className)}>
       <input
         checked={checked}
         id="default-checkbox"
@@ -18,7 +27,10 @@ const Checkbox = ({ checked, label, onChange }: CheckboxProps) => {
       />
       <label
         htmlFor="default-checkbox"
-        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-200"
+        className={twMerge(
+          'ms-2 text-sm font-medium text-gray-900 dark:text-gray-200',
+          labelClassName,
+        )}
       >
         {label}
       </label>
