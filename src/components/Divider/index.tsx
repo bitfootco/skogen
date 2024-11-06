@@ -17,7 +17,7 @@ const Divider = ({ className = '', size = 'md' }: DividerProps) => {
   return (
     <div
       className={twMerge(
-        `mx-8 my-4 flex w-full border-t-0 bg-gray-100 opacity-100 dark:bg-gray-700 ${sizesDictionary[size]} ${className}`,
+        `mx-auto my-4 flex w-full border-t-0 bg-gray-100 opacity-100 dark:bg-gray-700 ${sizesDictionary[size]} ${className}`,
       )}
     />
   );
