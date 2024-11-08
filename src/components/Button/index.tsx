@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import ConditionalWrapper from '../ConditionalWrapper';
 
 interface ButtonProps {
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary' | 'black' | 'white';
   variant?: 'solid' | 'outlined' | 'text';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   Icon?: React.ReactNode;
@@ -43,6 +43,16 @@ const Button = ({
       'font-body font-semibold my-6 text-left underline decoration-1 text-secondary-500',
     'secondary-outlined':
       'bg-transparent border-2 border-secondary-500 hover:bg-secondary-500 text-secondary-500 hover:text-button-secondary',
+    'black-solid': 'bg-black hover:bg-gray-900 text-white',
+    'black-outlined':
+      'bg-transparent border-2 border-black hover:bg-black text-black hover:text-white',
+    'black-text':
+      'font-body font-semibold my-6 text-left underline decoration-1 text-black',
+    'white-solid': 'bg-white hover:bg-gray-100 text-black',
+    'white-outlined':
+      'bg-transparent border-2 border-white hover:bg-white text-white hover:text-black',
+    'white-text':
+      'font-body font-semibold my-6 text-left underline decoration-1 text-white',
   };
   // 2. adjust size based on passed props, eg. sm, md, lg, etc.
   const sizesDictionary = {
