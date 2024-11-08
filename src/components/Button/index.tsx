@@ -8,10 +8,8 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   Icon?: React.ReactNode;
   LinkComponent?: React.ElementType<{
-    href: string;
     children: React.ReactNode;
   }>;
-  href?: string;
   className?: string;
   text: string;
   disabled?: boolean;
@@ -24,7 +22,6 @@ const Button = ({
   size = 'md',
   Icon,
   LinkComponent = () => null,
-  href = '',
   className = '',
   text,
   disabled = false,
@@ -43,7 +40,7 @@ const Button = ({
       'font-body font-semibold my-6 text-left underline decoration-1 text-secondary-500',
     'secondary-outlined':
       'bg-transparent border-2 border-secondary-500 hover:bg-secondary-500 text-secondary-500 hover:text-button-secondary',
-    'black-solid': 'bg-black hover:bg-gray-900 text-white',
+    'black-solid': 'bg-black hover:bg-gray-800 text-white',
     'black-outlined':
       'bg-transparent border-2 border-black hover:bg-black text-black hover:text-white',
     'black-text':
@@ -74,9 +71,9 @@ const Button = ({
       )}
     >
       <ConditionalWrapper
-        condition={!!href}
+        condition={!!LinkComponent}
         wrapper={(children: React.ReactElement) => (
-          <LinkComponent href={href}>{children}</LinkComponent>
+          <LinkComponent>{children}</LinkComponent>
         )}
       >
         <>
