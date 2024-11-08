@@ -1,15 +1,12 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import ConditionalWrapper from '../ConditionalWrapper';
 
 interface ButtonProps {
   color?: 'primary' | 'secondary' | 'black' | 'white';
   variant?: 'solid' | 'outlined' | 'text';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   Icon?: React.ReactNode;
-  LinkComponent?: React.ElementType<{
-    children: React.ReactNode;
-  }>;
+  LinkComponent?: React.ElementType;
   className?: string;
   text: string;
   disabled?: boolean;
@@ -21,7 +18,7 @@ const Button = ({
   variant = 'solid',
   size = 'md',
   Icon,
-  LinkComponent = () => null,
+  LinkComponent,
   className = '',
   text,
   disabled = false,
@@ -70,12 +67,16 @@ const Button = ({
         } ${disabledStyles} ${className}`,
       )}
     >
-      <ConditionalWrapper
-        condition={!!LinkComponent}
-        wrapper={(children: React.ReactElement) => (
-          <LinkComponent>{children}</LinkComponent>
-        )}
-      >
+      {LinkComponent ? (
+        <LinkComponent>
+          {text}
+          {Icon && (
+            <span className="ml-2 mt-0.5 transition-all group-hover:translate-x-1">
+              {Icon}
+            </span>
+          )}
+        </LinkComponent>
+      ) : (
         <>
           {text}
           {Icon && (
@@ -84,7 +85,7 @@ const Button = ({
             </span>
           )}
         </>
-      </ConditionalWrapper>
+      )}
     </button>
   );
 };
