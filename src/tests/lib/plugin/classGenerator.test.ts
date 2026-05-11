@@ -1,7 +1,7 @@
 import {
   classGenerator,
   classUtility,
-} from '../../../lib/plugin/classGenerator';
+} from '../../../lib/classGenerator';
 
 describe('classGenerator()', () => {
   describe('classUtility.general()', () => {

@@ -1,4 +1,4 @@
-import type { createPlugin } from 'tailwindcss/plugin';
+import type createPlugin from 'tailwindcss/plugin';
 import isDarkColor from './utils/isDarkColor';
 import { classGenerator } from './lib/classGenerator';
 
