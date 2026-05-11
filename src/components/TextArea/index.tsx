@@ -5,26 +5,28 @@ import { twMerge } from 'tailwind-merge';
 import Typography from '../Typography';
 
 interface TextAreaProps {
-  label: string;
+  label?: string;
   placeholder: string;
   id: string;
   value: string;
   size?: 'sm' | 'md' | 'lg';
   required?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
   error?: string;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextArea = ({
-  label,
+  label = '',
   placeholder,
   id,
   value,
   size = 'md',
   required = false,
   disabled = false,
+  fullWidth = false,
   error = '',
   className = '',
   onChange = () => {},
@@ -40,13 +42,15 @@ const TextArea = ({
     : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
 
   return (
-    <div>
-      <label
-        htmlFor={id}
-        className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200"
-      >
-        {label}
-      </label>
+    <div className={fullWidth ? 'w-full' : 'w-auto'}>
+      {label && (
+        <label
+          htmlFor={id}
+          className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200"
+        >
+          {label}
+        </label>
+      )}
       <textarea
         id={id}
         value={value}

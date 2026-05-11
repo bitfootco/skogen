@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      storybook:
+        patterns: ['storybook', '@storybook/*']
+      testing:
+        patterns: ['vitest', '@vitest/*', '@testing-library/*']
+      eslint:
+        patterns: ['eslint', '@eslint/*', 'eslint-*', 'typescript-eslint']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

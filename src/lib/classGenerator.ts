@@ -1,17 +1,10 @@
-import paletteGenerator from '../../utils/paletteGenerator';
-import { hexToRGB } from '../../utils/paletteGenerator/hexConverters';
+import paletteGenerator from '../utils/paletteGenerator';
 
 interface NewUtilities {
   [cssSelector: string]: {
     [cssRule: string]: string;
   };
 }
-
-const generateCSS = (color: string, type: string) => {
-  // generate raw CSS string to use with selector
-  const { r, g, b } = hexToRGB(color);
-  return `rgba(${r}, ${g}, ${b}, var(--tw-${type}-opacity, 1))`;
-};
 
 export const classUtility = {
   general: ({
@@ -25,19 +18,13 @@ export const classUtility = {
     color: string;
     name: string;
   }): NewUtilities => {
-    let new_utilities: NewUtilities = {};
-    // generate singleton CSS color utility
-    new_utilities['.' + type + '-' + name] = {
-      [attribute]: generateCSS(color, type),
-    };
-    // generate the full palette
+    const new_utilities: NewUtilities = {};
+    new_utilities['.' + type + '-' + name] = { [attribute]: color };
     const palette = paletteGenerator(color);
     Object.keys(palette).forEach((shade) => {
-      const buffer: {
-        [key: string]: string;
-      } = {};
-      buffer[attribute] = generateCSS(palette[shade], type);
-      new_utilities['.' + type + '-' + name + '-' + shade] = buffer;
+      new_utilities['.' + type + '-' + name + '-' + shade] = {
+        [attribute]: palette[shade],
+      };
     });
     return new_utilities;
   },
@@ -53,17 +40,10 @@ export const classGenerator = function (
 } {
   let new_utilities = {};
 
-  // create text utilities
   new_utilities = Object.assign(
     new_utilities,
-    classUtility.general({
-      type: 'text',
-      attribute: 'color',
-      color,
-      name,
-    }),
+    classUtility.general({ type: 'text', attribute: 'color', color, name }),
   );
-  // create background utilities
   new_utilities = Object.assign(
     new_utilities,
     classUtility.general({
@@ -73,7 +53,6 @@ export const classGenerator = function (
       name,
     }),
   );
-  // crate border utilities
   new_utilities = Object.assign(
     new_utilities,
     classUtility.general({

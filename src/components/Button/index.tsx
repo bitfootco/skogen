@@ -1,17 +1,12 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import ConditionalWrapper from '../ConditionalWrapper';
 
 interface ButtonProps {
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary' | 'black' | 'white';
   variant?: 'solid' | 'outlined' | 'text';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   Icon?: React.ReactNode;
-  LinkComponent?: React.ElementType<{
-    href: string;
-    children: React.ReactNode;
-  }>;
-  href?: string;
+  LinkComponent?: React.ElementType;
   className?: string;
   text: string;
   disabled?: boolean;
@@ -23,8 +18,7 @@ const Button = ({
   variant = 'solid',
   size = 'md',
   Icon,
-  LinkComponent = () => null,
-  href = '',
+  LinkComponent,
   className = '',
   text,
   disabled = false,
@@ -43,6 +37,16 @@ const Button = ({
       'font-body font-semibold my-6 text-left underline decoration-1 text-secondary-500',
     'secondary-outlined':
       'bg-transparent border-2 border-secondary-500 hover:bg-secondary-500 text-secondary-500 hover:text-button-secondary',
+    'black-solid': 'bg-black hover:bg-gray-800 text-white',
+    'black-outlined':
+      'bg-transparent border-2 border-black hover:bg-black text-black hover:text-white',
+    'black-text':
+      'font-body font-semibold my-6 text-left underline decoration-1 text-black',
+    'white-solid': 'bg-white hover:bg-gray-100 text-black',
+    'white-outlined':
+      'bg-transparent border-2 border-white hover:bg-white text-white hover:text-black',
+    'white-text':
+      'font-body font-semibold my-6 text-left underline decoration-1 text-white',
   };
   // 2. adjust size based on passed props, eg. sm, md, lg, etc.
   const sizesDictionary = {
@@ -57,29 +61,32 @@ const Button = ({
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={twMerge(
-        `group inline-flex items-center rounded-full ${
-          sizesDictionary[size]
-        } font-body font-bold ${
+        `flex flex-row rounded-full ${sizesDictionary[size]} font-body font-bold ${
           variantsDictionary[`${color}-${variant}`]
         } ${disabledStyles} ${className}`,
       )}
     >
-      <ConditionalWrapper
-        condition={!!href}
-        wrapper={(children: React.ReactElement) => (
-          <LinkComponent href={href}>{children}</LinkComponent>
-        )}
-      >
+      {LinkComponent ? (
+        <LinkComponent>
+          {text}
+          {Icon && (
+            <span className="ml-2 mt-0.5">
+              {Icon}
+            </span>
+          )}
+        </LinkComponent>
+      ) : (
         <>
           {text}
           {Icon && (
-            <span className="ml-2 mt-0.5 transition-all group-hover:translate-x-1">
+            <span className="ml-2 mt-0.5">
               {Icon}
             </span>
           )}
         </>
-      </ConditionalWrapper>
+      )}
     </button>
   );
 };
