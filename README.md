@@ -32,19 +32,12 @@ Add the Skogen stylesheet to your project's CSS entry file:
 
 ### 2. Register the Tailwind plugin
 
-In your `tailwind.config.js` (or CSS `@plugin` directive in Tailwind v4):
+Add the `@plugin` directive to your CSS entry file, after the imports:
 
-```js
-import skogen from '@bitfootco/skogen';
-
-export default {
-  plugins: [
-    // Use defaults (blue-800 primary, violet-800 secondary)
-    skogen(),
-    // Or pass your own brand colours:
-    // skogen({ primary: '#e11d48', secondary: '#7c3aed' }),
-  ],
-};
+```css
+@import "@bitfootco/skogen/styles/index.css";
+@import "tailwindcss";
+@plugin "@bitfootco/skogen/plugin";
 ```
 
 ### 3. Use components
@@ -79,7 +72,7 @@ export default function App() {
 
 ## Tailwind Plugin
 
-The `skogen` Tailwind plugin generates utility classes for your primary and secondary brand colours at all standard Tailwind shade steps (50–950):
+The `skogen` Tailwind plugin generates utility classes for the default primary and secondary brand colours at all standard Tailwind shade steps (50–950):
 
 ```
 text-primary        bg-primary        border-primary
@@ -92,6 +85,8 @@ It also generates:
 - `.text-default` — auto-contrasting text (white on dark, black on light)
 - `.text-button-default` / `.text-button-secondary` — button text contrast
 - `.bg-default` — default background
+
+Default colours are blue-800 (`#1e40af`) for primary and violet-800 (`#5b21b6`) for secondary.
 
 ### Palette Utility
 

@@ -12,7 +12,12 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
-    }
+    },
+    "./plugin": {
+      "import": "./dist/plugin.mjs",
+      "require": "./dist/plugin.cjs"
+    },
+    "./styles/*": "./styles/*"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

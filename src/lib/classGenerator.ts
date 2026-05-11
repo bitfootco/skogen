@@ -1,4 +1,4 @@
-import paletteGenerator from '../../utils/paletteGenerator';
+import paletteGenerator from '../utils/paletteGenerator';
 
 interface NewUtilities {
   [cssSelector: string]: {
