@@ -72,7 +72,7 @@ const Button = ({
         <LinkComponent>
           {text}
           {Icon && (
-            <span className="ml-2 mt-0.5 transition-all group-hover:translate-x-1">
+            <span className="ml-2 mt-0.5">
               {Icon}
             </span>
           )}
@@ -81,7 +81,7 @@ const Button = ({
         <>
           {text}
           {Icon && (
-            <span className="ml-2 mt-0.5 transition-all group-hover:translate-x-1">
+            <span className="ml-2 mt-0.5">
               {Icon}
             </span>
           )}
