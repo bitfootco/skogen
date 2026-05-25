@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { subscribe, removeToast } from '../../utils/toastStore';
 import type { ToastItem } from '../../utils/toastStore';
 import Toast from '../Toast';
