@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 import Typography from '../Typography';
 
 interface InputFieldProps {
@@ -57,7 +57,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           id={id}
           value={value}
           type={type}
-          className={twMerge(
+          className={cn(
             `block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 ${sizeDictionary[size]} ${borderStyling} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${className}`,
           )}
           placeholder={placeholder}

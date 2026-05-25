@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 import Typography from '../Typography';
 
 interface TextAreaProps {
@@ -54,7 +54,7 @@ const TextArea = ({
       <textarea
         id={id}
         value={value}
-        className={twMerge(
+        className={cn(
           `block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900  ${sizeDictionary[size]} ${borderStyling} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${className}`,
         )}
         placeholder={placeholder}

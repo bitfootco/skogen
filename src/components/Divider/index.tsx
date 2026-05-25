@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 
 interface DividerProps {
   className?: string;
@@ -15,7 +15,7 @@ const Divider = ({ className = '', size = 'md' }: DividerProps) => {
 
   return (
     <div
-      className={twMerge(
+      className={cn(
         `mx-auto my-4 flex w-full border-t-0 bg-gray-100 opacity-100 dark:bg-gray-700 ${sizesDictionary[size]} ${className}`,
       )}
     />

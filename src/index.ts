@@ -10,3 +10,4 @@ export { default as TextArea } from './components/TextArea';
 export { default as Typography } from './components/Typography';
 // utility exports
 export { default as paletteGenerator } from './utils/paletteGenerator';
+export { cn } from './utils/cn';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 
 export interface TypographyProps {
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
@@ -51,7 +51,7 @@ const Typography = ({
       case 'h1':
         return (
           <h1
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -61,7 +61,7 @@ const Typography = ({
       case 'h2':
         return (
           <h2
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -71,7 +71,7 @@ const Typography = ({
       case 'h3':
         return (
           <h3
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -81,7 +81,7 @@ const Typography = ({
       case 'h4':
         return (
           <h4
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -91,7 +91,7 @@ const Typography = ({
       case 'h5':
         return (
           <h5
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -101,7 +101,7 @@ const Typography = ({
       case 'h6':
         return (
           <h6
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -111,7 +111,7 @@ const Typography = ({
       case 'p':
         return (
           <p
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >
@@ -121,7 +121,7 @@ const Typography = ({
       default:
         return (
           <p
-            className={twMerge(
+            className={cn(
               `${variantsDictionary[variant]} ${colorsDictionary[color]} ${className}`,
             )}
           >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 
 interface ButtonProps {
   color?: 'primary' | 'secondary' | 'black' | 'white';
@@ -62,7 +62,7 @@ const Button = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={twMerge(
+      className={cn(
         `flex flex-row rounded-full ${sizesDictionary[size]} font-body font-bold ${
           variantsDictionary[`${color}-${variant}`]
         } ${disabledStyles} ${className}`,

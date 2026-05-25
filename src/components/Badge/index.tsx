@@ -1,5 +1,5 @@
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 
 interface BadgeProps {
   color?: 'primary' | 'secondary';
@@ -36,7 +36,7 @@ const Badge = ({
   // 3. Return the badge with pre-configured styles, dynamic styles and passed styles props
   return (
     <div
-      className={twMerge(
+      className={cn(
         'inline-flex',
         'items-center',
         'px-2',

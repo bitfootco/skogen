@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '../../utils/cn';
 
 interface CheckboxProps {
   checked: boolean;
@@ -16,7 +16,7 @@ const Checkbox = ({
   labelClassName = '',
 }: CheckboxProps) => {
   return (
-    <div className={twMerge('mb-4 inline-flex items-center', className)}>
+    <div className={cn('mb-4 inline-flex items-center', className)}>
       <input
         checked={checked}
         id="default-checkbox"
@@ -26,7 +26,7 @@ const Checkbox = ({
       />
       <label
         htmlFor="default-checkbox"
-        className={twMerge(
+        className={cn(
           'ms-2 text-sm font-medium text-gray-900 dark:text-gray-200',
           labelClassName,
         )}
