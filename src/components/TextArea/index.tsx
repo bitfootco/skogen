@@ -5,7 +5,7 @@ import { cn } from '../../utils/cn';
 import Typography from '../Typography';
 
 interface TextAreaProps {
-  label?: string;
+  label?: string | React.ReactNode;
   placeholder: string;
   id: string;
   value: string;

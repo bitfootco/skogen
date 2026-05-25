@@ -5,7 +5,7 @@ import { cn } from '../../utils/cn';
 import Typography from '../Typography';
 
 interface InputFieldProps {
-  label: string;
+  label: string | React.ReactNode;
   placeholder: string;
   id: string;
   value: string;

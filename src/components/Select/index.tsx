@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 
 interface SelectProps {
-  label?: string;
+  label?: string | React.ReactNode;
   id: string;
   className?: string;
   options: {
