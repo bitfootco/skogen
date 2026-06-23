@@ -57,6 +57,9 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           id={id}
           value={value}
           type={type}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `${id}-error` : undefined}
+          aria-required={required || undefined}
           className={cn(
             `block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 ${sizeDictionary[size]} ${borderStyling} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${className}`,
           )}
@@ -67,9 +70,11 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           ref={ref}
         />
         {error && (
-          <Typography variant="p" color="error" className="mb-2">
-            {error}
-          </Typography>
+          <span id={`${id}-error`}>
+            <Typography variant="p" color="error" className="mb-2">
+              {error}
+            </Typography>
+          </span>
         )}
       </div>
     );

@@ -2,9 +2,15 @@
 export { default as Badge } from './components/Badge';
 export { default as Button } from './components/Button';
 export { default as Checkbox } from './components/Checkbox';
+export { default as DateInput } from './components/DateInput';
 export { default as Divider } from './components/Divider';
+export { default as FileInput } from './components/FileInput';
+export { default as FormField } from './components/FormField';
+export type { FieldAria } from './components/FormField';
 export { default as InputField } from './components/InputField';
 export { default as InputMask } from './components/InputMask';
+export { default as MultiSelect } from './components/MultiSelect';
+export { default as RadioGroup } from './components/RadioGroup';
 export { default as Select } from './components/Select';
 export { default as TextArea } from './components/TextArea';
 export { default as Toast } from './components/Toast';
