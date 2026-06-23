@@ -11,6 +11,8 @@ interface SelectProps {
   }[];
   selected: string | string[];
   multiple?: boolean;
+  required?: boolean;
+  error?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -21,10 +23,16 @@ const Select = ({
   className = '',
   multiple = false,
   selected = '',
+  required = false,
+  error = '',
   onChange,
 }: SelectProps) => {
+  const borderStyling = error
+    ? 'border-red-500 focus:border-red-500 focus:ring-red-500 dark:border-red-500'
+    : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500';
+
   return (
-    <form>
+    <div>
       {label && (
         <label
           htmlFor={id}
@@ -36,8 +44,12 @@ const Select = ({
       <select
         id={id}
         value={selected}
+        required={required}
+        aria-required={required || undefined}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
-          `block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 ${className}`,
+          `block w-full appearance-none rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 ${borderStyling} ${className}`,
         )}
         multiple={multiple}
         onChange={onChange}
@@ -53,7 +65,12 @@ const Select = ({
           </option>
         ))}
       </select>
-    </form>
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-500">
+          {error}
+        </p>
+      )}
+    </div>
   );
 };
 

@@ -54,6 +54,9 @@ const TextArea = ({
       <textarea
         id={id}
         value={value}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        aria-required={required || undefined}
         className={cn(
           `block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900  ${sizeDictionary[size]} ${borderStyling} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${className}`,
         )}
@@ -63,9 +66,11 @@ const TextArea = ({
         onChange={onChange}
       />
       {error && (
-        <Typography variant="p" color="error" className="mt-1">
-          {error}
-        </Typography>
+        <span id={`${id}-error`}>
+          <Typography variant="p" color="error" className="mt-1">
+            {error}
+          </Typography>
+        </span>
       )}
     </div>
   );
